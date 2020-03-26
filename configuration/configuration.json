@@ -1,0 +1,45 @@
+{
+  "schemes_path": "/configuration/schemes",
+  "schemes_assets_path": "",
+  "disable_schemes_update": false,
+  "schemes_update": 60,
+  "privkeys": "",
+  "url": "$HOST_URL",
+  "DisableTLS": true,
+  "email": "",
+  "EnableSSE": false,
+  "verbose": "$DEBUG",
+  "quiet": false,
+  "log_json": false,
+  "production": true,
+  "disclose_perms": [
+    "*"
+  ],
+  "sign_perms": [],
+  "issue_perms": [],
+  "no_auth": false,
+  "listen_addr": "",
+  "port": "8080",
+  "tls_cert": "",
+  "tls_cert_file": "",
+  "tls_privkey": "",
+  "tls_privkey_file": "",
+  "client_port": 0,
+  "client_listen_addr": "",
+  "client_tls_cert": "",
+  "client_tls_cert_file": "",
+  "client_tls_privkey": "",
+  "client_tls_privkey_file": "",
+  "requestors": {
+    "$CLIENT_KEY": {
+      "auth_method": "hmac",
+      "key" : "$CLIENT_SECRET"
+    }
+  },
+  "jwt_issuer": "$JWT_ISSUER",
+  "jwt_privkey": "",
+  "jwt_privkey_file": "$JWT_PRIVATE_KEY_FILE",
+  "max_request_age": 300,
+  "static_path": "",
+  "static_prefix": "/"
+}
