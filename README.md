@@ -1,8 +1,8 @@
 # IRMA Docker deployment for GIDS
 The project contains the containerized deployment of the irmago server. This project contains:
 
-1. The entrypoint.sh that configures the server based on the environment variables.
-1. The Dockerfile that builds the irmago server in a Docker container.
+1. The `entrypoint.bash` that configures the server based on the environment variables.
+1. The `Dockerfile` that builds the irmago server in a Docker container.
 
 ## Assumptions
 1. SSL offloading is not part of this docker container
@@ -58,4 +58,3 @@ docker-compose build && docker-compose up
 | CLIENT_SECRET        | \[generated if absent]    | The secret of the connecting client, generated and printed to the console if absent. |
 | SCHEMES              | https://privacybydesign.foundation/schememanager/pbdf | Space separated list of scheme URLs |
 | DEBUG                | 0                         | If 0 debugging is disabled. To enable debug info: 1=normal, 2=high |
- 
