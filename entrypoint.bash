@@ -60,8 +60,8 @@ if [ -n "$SCHEMES" ]; then
   IFS=$' '
   for SCHEME in $SCHEMES; do
     echo "Downloading scheme $SCHEME"
-    /go/bin/irma scheme download /configuration/schemes "$SCHEME"
+    /usr/local/bin/irma scheme download /configuration/schemes "$SCHEME"
   done
 fi
 
-/go/bin/irma server -c /configuration/configuration.json
+/usr/local/bin/irma server -c /configuration/configuration.json
