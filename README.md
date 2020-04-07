@@ -11,22 +11,50 @@ The project contains the containerized deployment of the irmago server. This pro
 
 ## Running on Docker and Docker compose
 
+### Running up this container locally with ngrok
+1. Create a ngrok account [here](https://dashboard.ngrok.com/get-started) .
+1. Start the ngrok server with the following command
+      
+       ngrok http 8081
+      
+1. Copy the https URL from the  output, in this example the https url is **https://41bd98bc.ngrok.io**:
+        
+        ngrok by @inconshreveable                                                                                                                                                                                                                                                                                                                            (Ctrl+C to quit)
+                                                                                                                                                                                                                                                                                                                                                                             
+        Session Status                online                                                                                                                                                                                                                                                                                                                                 
+        Account                       Roland Groen (Plan: Free)                                                                                                                                                                                                                                                                                                              
+        Version                       2.3.35                                                                                                                                                                                                                                                                                                                                 
+        Region                        United States (us)                                                                                                                                                                                                                                                                                                                     
+        Web Interface                 http://127.0.0.1:4040                                                                                                                                                                                                                                                                                                                  
+        Forwarding                    http://41bd98bc.ngrok.io -> http://localhost:8081                                                                                                                                                                                                                                                                                      
+        Forwarding                    https://41bd98bc.ngrok.io -> http://localhost:8081                                                                                                                                                                                                                                                                                     
+                                                                                                                                                                                                                                                                                                                                                                             
+        Connections                   ttl     opn     rt1     rt5     p50     p90                                                                                                                                                                                                                                                                                            
+                                      0       0       0.00    0.00    0.00    0.00 
+
+
 ### Setting up the .env file for docker and docker compose
 
 This project is configured with environment variables.
 Default values are provided in the `.env.dist` file.
-The following values can be manually generated:
+The following values can be manually set:
+
+1. `HOST_URL`, if you use ngrok to expose the container to the public internet, make sure to
+set the value of the HOST_URL to the URL printed in the output of the ngrok command. If you configure the
+container behind a reverse proxy, please configure the public URL here. Please make sure that any URL you use is 
+an https URL. 
 
 1. `CLIENT_SECRET`, any random string works. You can use openssl for generating a string
 
        openssl rand -hex 32
 1. `JWT_PUBLIC_KEY`/`JWT_PRIVATE_KEY`. Generate a keypair in the ./configuration directory by running
 
-        cd ./configuration
-        ../tools/keygen.sh
-        cd ..
+       cd ./configuration
+       ../tools/keygen.sh
+       cd ..
 1. Copy the `.env.dist` file to `.env` and add the following values
 
+       HOST_URL=.. the URL from ngrok or the public URL for this service.
        CLIENT_SECRET=... the result of 1)
        JWT_PUBLIC_KEY_FILE=/configuration/public_key.pem
        JWT_PRIVATE_KEY_FILE=/configuration/private_key.pem
@@ -39,11 +67,23 @@ docker build . -t irma_server
 docker run -p 8081:8080 --env-file=.env --name irma_server irma_server
 ```
 
-# Docker compose
+## Docker compose
 ```shell script
-cp .env.dist .env
 docker-compose build && docker-compose up
 ```
+
+## Testing the installation.
+
+The container should be available on localhost with the following URL:
+
+[http://localhost:8081/publickey](http://localhost:8081/publickey)
+
+When running with ngrok, the installation can be tested with adding /publickey to the ngrok URL, for example:
+
+[http://41bd98bc.ngrok.io/publickey](http://41bd98bc.ngrok.io/publickey)
+
+The page should display the public key of the server.
+
 
 # Configuration
 
@@ -51,7 +91,7 @@ docker-compose build && docker-compose up
 
 | Variable | default | remark |
 | ---: | --- | :--- |
-| HOST_URL             | http://localhost:8081/    | The external URL on which the container is hosted. |
+| HOST_URL             | https://localhost:8081/    | The external URL on which the container is hosted. |
 | JWT_ISSUER           | gids                      | The issuer of the JWT message |
 | JWT_PUBLIC_KEY       | \[generated if absent]    | If JWT_PRIVATE_KEY not present, and no file is added to the container and set in JWT_PRIVATE_KEY_FILE, this value will be generated on startup of the container. The generated key is printed to the console. |
 | JWT_PUBLIC_KEY_FILE  |                           | Optional method of referring to a public key file added to the container. |
