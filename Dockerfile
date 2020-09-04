@@ -25,8 +25,8 @@ ENV JWT_PUBLIC_KEY ""
 ENV JWT_PUBLIC_KEY_FILE "/configuration/jwt_public.pem"
 ENV JWT_PRIVATE_KEY ""
 ENV JWT_PRIVATE_KEY_FILE "/configuration/jwt_private.pem"
-ENV CLIENT_KEY "testsp"
-ENV CLIENT_SECRET ""
+ENV CLIENT_MAP "{}"
+ENV EMAIL "info@example.com"
 ENV SCHEMES="https://privacybydesign.foundation/schememanager/pbdf"
 ENV DEBUG 0
 

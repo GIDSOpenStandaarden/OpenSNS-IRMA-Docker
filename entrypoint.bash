@@ -13,7 +13,7 @@ function check_variable {
 
 check_variable "HOST_URL"
 check_variable "JWT_ISSUER"
-check_variable "CLIENT_KEY"
+check_variable "CLIENT_MAP"
 
 ## Check if there is a private key file added to the container and set in JWT_PRIVATE_KEY_FILE.
 if [ ! -s "$JWT_PRIVATE_KEY_FILE" ]; then
@@ -34,13 +34,6 @@ if [ -s "$JWT_PUBLIC_KEY_FILE" ]; then
   # Note that the public key file is only used for logging here, the server does not need one.
   echo "The public key is set to:"
   cat "$JWT_PUBLIC_KEY_FILE"
-  echo ""
-fi
-
-if [ -z "$CLIENT_SECRET" ]; then
-  echo "Generating client secret becasue CLIENT_SECRET environment variable is not set:"
-  export CLIENT_SECRET="$(openssl rand -hex 32)"
-  echo "$CLIENT_SECRET"
   echo ""
 fi
 
