@@ -6,7 +6,7 @@
   "privkeys": "",
   "url": "$HOST_URL",
   "DisableTLS": true,
-  "email": "",
+  "email": "$EMAIL",
   "EnableSSE": false,
   "verbose": "$DEBUG",
   "quiet": false,
@@ -30,12 +30,7 @@
   "client_tls_cert_file": "",
   "client_tls_privkey": "",
   "client_tls_privkey_file": "",
-  "requestors": {
-    "$CLIENT_KEY": {
-      "auth_method": "hmac",
-      "key" : "$CLIENT_SECRET"
-    }
-  },
+  "requestors": $CLIENT_MAP,
   "jwt_issuer": "$JWT_ISSUER",
   "jwt_privkey": "",
   "jwt_privkey_file": "$JWT_PRIVATE_KEY_FILE",

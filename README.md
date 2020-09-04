@@ -44,7 +44,20 @@ set the value of the HOST_URL to the URL printed in the output of the ngrok comm
 container behind a reverse proxy, please configure the public URL here. Please make sure that any URL you use is 
 an https URL. 
 
-1. `CLIENT_SECRET`, any random string works. You can use openssl for generating a string
+1. `CLIENT_MAP`, a JSON map of keys and secrets. For example:
+```json
+{
+  "testsp": {
+    "auth_method": "hmac",
+    "key": "dGVzdHNw"
+  }
+}
+```
+Please note that the key must be a base64 encoded value. For example:
+```shell script
+echo -n testsp | base64
+> dGVzdHNw
+```
 
        openssl rand -hex 32
 1. `JWT_PUBLIC_KEY`/`JWT_PRIVATE_KEY`. Generate a keypair in the ./configuration directory by running
@@ -55,7 +68,7 @@ an https URL.
 1. Copy the `.env.dist` file to `.env` and add the following values
 
        HOST_URL=.. the URL from ngrok or the public URL for this service.
-       CLIENT_SECRET=... the result of 1)
+       CLIENT_MAP=... the result of 1)
        JWT_PUBLIC_KEY_FILE=/configuration/public_key.pem
        JWT_PRIVATE_KEY_FILE=/configuration/private_key.pem
        DEBUG=1

@@ -5,7 +5,7 @@ set -euxo pipefail
 
 echo "HOST_URL is ${HOST_URL}"
 echo "JWT_ISSUER is ${JWT_ISSUER}"
-echo "CLIENT_KEY is ${CLIENT_KEY}"
+echo "CLIENT_MAP is ${CLIENT_MAP}"
 
 if [ -s "$JWT_PUBLIC_KEY_FILE" ]; then
   # Note that the public key file is only used for logging here, the server does not need one.
