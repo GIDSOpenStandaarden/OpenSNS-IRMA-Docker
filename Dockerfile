@@ -17,6 +17,7 @@ ADD ./configuration /configuration
 ADD ./tools /tools
 ADD entrypoint.bash entrypoint.bash
 
+ENV PORT "8080"
 ENV HOST_URL "https://localhost:8081/"
 ENV ADMIN_EMAIL ""
 ENV JWT_ISSUER "gids"

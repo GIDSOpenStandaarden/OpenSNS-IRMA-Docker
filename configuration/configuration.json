@@ -19,7 +19,7 @@
   "issue_perms": [],
   "no_auth": false,
   "listen_addr": "",
-  "port": "8080",
+  "port": "$PORT",
   "tls_cert": "",
   "tls_cert_file": "",
   "tls_privkey": "",
