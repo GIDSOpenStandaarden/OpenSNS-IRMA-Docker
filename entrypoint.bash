@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # see https://vaneyckt.io/posts/safer_bash_scripts_with_set_euxo_pipefail/
-set -euxo pipefail
+set -euo pipefail
 
 function check_variable {
   eval "VAL=\"\$$1\""
