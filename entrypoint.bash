@@ -52,6 +52,8 @@ if [ $DEBUG -gt 0 ]; then
 echo "/configuration/configuration.json"
 cat /configuration/configuration.json
 echo ""
+cat "$JWT_PUBLIC_KEY_FILE"
+echo ""
 fi
 
 # Download the schemes
