@@ -6,7 +6,7 @@
   "privkeys": "",
   "url": "$HOST_URL",
   "DisableTLS": true,
-  "email": "",
+  "email": "$ADMIN_EMAIL",
   "EnableSSE": false,
   "verbose": "$DEBUG",
   "quiet": false,
