@@ -51,8 +51,10 @@ envsubst </configuration/configuration.json.tmp >/configuration/configuration.js
 if [ $DEBUG -gt 0 ]; then
 echo "/configuration/configuration.json"
 cat /configuration/configuration.json
-echo ""
+echo "JWT_PUBLIC_KEY_FILE: "
 cat "$JWT_PUBLIC_KEY_FILE"
+echo "JWT_PRIVATE_KEY_FILE: "
+cat "$JWT_PRIVATE_KEY_FILE"
 echo ""
 fi
 
