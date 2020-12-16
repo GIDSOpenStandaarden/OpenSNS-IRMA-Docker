@@ -3,6 +3,8 @@
 # see https://vaneyckt.io/posts/safer_bash_scripts_with_set_euxo_pipefail/
 set -euo pipefail
 
+set
+
 function check_variable {
   eval "VAL=\"\$$1\""
   if [ -z "$VAL" ]; then
