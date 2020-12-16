@@ -51,7 +51,8 @@ docker-compose build && docker-compose up
 
 | Variable | default | remark |
 | ---: | --- | :--- |
-| HOST_URL             | https://localhost:8081/    | The external URL on which the container is hosted. |
+| HOST_URL             | https://localhost:8081/   | The external URL on which the container is hosted. |
+| ADMIN_EMAIL          |                           | Adiminstrator email address. |
 | JWT_ISSUER           | gids                      | The issuer of the JWT message |
 | JWT_PUBLIC_KEY       | \[generated if absent]    | If JWT_PRIVATE_KEY not present, and no file is added to the container and set in JWT_PRIVATE_KEY_FILE, this value will be generated on startup of the container. The generated key is printed to the console. |
 | JWT_PUBLIC_KEY_FILE  |                           | Optional method of referring to a public key file added to the container. |
