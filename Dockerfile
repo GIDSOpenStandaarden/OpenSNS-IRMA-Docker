@@ -18,6 +18,7 @@ ADD ./tools /tools
 ADD entrypoint.bash entrypoint.bash
 
 ENV HOST_URL "https://localhost:8081/"
+ENV ADMIN_EMAIL ""
 ENV JWT_ISSUER "gids"
 ENV JWT_PUBLIC_KEY ""
 ENV JWT_PUBLIC_KEY_FILE "/configuration/jwt_public.pem"
