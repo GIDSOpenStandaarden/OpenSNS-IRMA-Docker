@@ -1,16 +1,15 @@
-FROM golang:1-stretch AS build
+FROM golang:1.16 as build
 
-RUN go get -d -u github.com/privacybydesign/irmago
-#RUN go get -u github.com/golang/dep/cmd/dep
+ENV CGO_ENABLED=0
 
-WORKDIR $GOPATH/src/github.com/privacybydesign/irmago
+RUN git clone https://github.com/privacybydesign/irmago.git
+WORKDIR /go/irmago
 
-RUN go mod init
-RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go install ./irma
+RUN go build -a -ldflags '-extldflags "-static"' -o "/bin/irma" ./irma
 
 FROM alpine:3.11
 
-COPY --from=build /go/bin/irma /usr/local/bin/irma
+COPY --from=build /bin/irma /usr/local/bin/irma
 
 RUN apk update && apk add gettext bash openssl
 
