@@ -1,7 +1,7 @@
 FROM golang:1-stretch AS build
 
 RUN go get -d -u github.com/privacybydesign/irmago
-RUN go get -u github.com/golang/dep/cmd/dep
+#RUN go get -u github.com/golang/dep/cmd/dep
 
 WORKDIR $GOPATH/src/github.com/privacybydesign/irmago
 
