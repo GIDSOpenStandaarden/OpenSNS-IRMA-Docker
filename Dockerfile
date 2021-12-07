@@ -5,6 +5,7 @@ RUN go get -d -u github.com/privacybydesign/irmago
 
 WORKDIR $GOPATH/src/github.com/privacybydesign/irmago
 
+RUN go mod init
 RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go install ./irma
 
 FROM alpine:3.11
