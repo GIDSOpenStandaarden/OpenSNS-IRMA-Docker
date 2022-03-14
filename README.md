@@ -26,6 +26,10 @@ The following values can be manually generated:
   }
 }
 ```
+In the .env file, the JSON should be quoted correctly:
+```shell
+CLIENT_MAP='{"testsp":{"auth_method":"hmac","key": "dGVzdHNw"}}'
+```
 Please note that the key must be a base64 encoded value. For example:
 ```shell script
 echo -n testsp | base64
