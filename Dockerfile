@@ -1,10 +1,11 @@
-FROM golang:1.16 as build
+FROM golang:1.18 as build
 
 ENV CGO_ENABLED=0
 
 RUN git clone https://github.com/privacybydesign/irmago.git
 WORKDIR /go/irmago
 
+RUN go mod download golang.org/x/sync
 RUN go build -a -ldflags '-extldflags "-static"' -o "/bin/irma" ./irma
 
 FROM alpine:3.11
