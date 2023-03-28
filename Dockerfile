@@ -1,8 +1,9 @@
-FROM golang:1.16 as build
+FROM golang:1 as build
 
 ENV CGO_ENABLED=0
+ARG IRMA_VERSION="v0.12.2"
 
-RUN git clone https://github.com/privacybydesign/irmago.git
+RUN git clone -b $IRMA_VERSION https://github.com/privacybydesign/irmago.git
 WORKDIR /go/irmago
 
 RUN go build -a -ldflags '-extldflags "-static"' -o "/bin/irma" ./irma
