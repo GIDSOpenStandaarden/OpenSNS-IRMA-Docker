@@ -26,5 +26,5 @@ jobs:
         with:
           push: true
           tags: |
-            ghcr.io/GIDSOpenStandaarden/opensns-irma-docker:${{ steps.date.outputs.date }}
-            ghcr.io/GIDSOpenStandaarden/opensns-irma-docker:latest
+            ghcr.io/gidsopenstandaarden/opensns-irma-docker:${{ steps.date.outputs.date }}
+            ghcr.io/gidsopenstandaarden/opensns-irma-docker:latest
